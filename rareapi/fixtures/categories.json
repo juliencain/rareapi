@@ -3,21 +3,21 @@
       "model": "rareapi.category",
       "pk": 1,
       "fields": {
-          "category": "Educational"
+          "label": "Educational"
       }
   },
   {
     "model": "rareapi.category",
     "pk": 2,
     "fields": {
-        "description": "Gossip"
+        "label": "Gossip"
     }
  },
  {
   "model": "rareapi.category",
   "pk": 3,
   "fields": {
-      "description": "Hobbies"
+      "label": "Hobbies"
   }
 }
 ]
