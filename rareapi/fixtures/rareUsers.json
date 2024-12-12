@@ -1,0 +1,53 @@
+[
+  {
+      "model": "rareapi.rareuser",
+      "pk": 1,
+      "fields": {
+          "first_name": "Darva",
+          "last_name": "Conger",
+          "bio": "married a guy on TV just for the money.",
+          "profile_image_url": "https://www.shutterstock.com/image-photo/los-angeles-mar-19-darva-260nw-262237616.jpg",
+          "email": "darva@conger.com",
+          "created_on": "02/15/2022",
+          "active": 1,
+          "is_staff": true,
+          "uid": "1"
+
+
+      }
+  },
+  {
+    "model": "rareapi.rareuser",
+    "pk": 2,
+    "fields": {
+        "first_name": "Johnny",
+        "last_name": "Rotten",
+        "bio": "Was in a punk band, then quit that band and made another band.",
+        "profile_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4uq8JjSj-F614WaqtB24YkUCWZXPbgjO0vQ&s",
+        "email": "johnny@rotten.com",
+        "created_on": "03/25/2021",
+        "active": 0,
+        "is_staff": false,
+        "uid": "2"
+
+
+    }
+  },
+  {
+    "model": "rareapi.rareuser",
+    "pk": 3,
+    "fields": {
+        "first_name": "Rikki",
+        "last_name": "Lake",
+        "bio": "I had a tv show for a little while, and I was in a movie once.",
+        "profile_image_url": "https://m.media-amazon.com/images/M/MV5BOTk3M2Q5ODctYjBiYy00MGQ3LWFlNDMtN2JhOWM4ZWY3N2IyXkEyXkFqcGc@._V1_.jpg",
+        "email": "ricki@lake.com",
+        "created_on": "01/10/2020",
+        "active": null,
+        "is_staff": true,
+        "uid": "3"
+
+
+    }
+}
+]
