@@ -46,6 +46,35 @@ class PostView(ViewSet):
         except Category.DoesNotExist:
             return Response({'message': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
    
+    def update(self, request, pk):
+        """Handle PUT requests for updating a post"""
+        try:
+            post = Post.objects.get(pk=pk)
+            post.title = request.data["title"]
+            post.publication_date = request.data["publication_date"]
+            post.image_url = request.data["image_url"]
+            post.content = request.data["content"]
+            post.approved = request.data.get("approved", True)
+
+            if "rare_user_id" in request.data:
+                rare_user = RareUser.objects.get(pk=request.data["rare_user_id"])
+                post.rare_user = rare_user
+            if "category_id" in request.data:
+                category = Category.objects.get(pk=request.data["category_id"])
+                post.category = category
+
+            post.save()
+            serializer = PostSerializer(post)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Post.DoesNotExist:
+            return Response({'message': 'Post not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except RareUser.DoesNotExist:
+            return Response({'message': 'Rare user not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Category.DoesNotExist:
+            return Response({'message': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
+
+
 
 
 
