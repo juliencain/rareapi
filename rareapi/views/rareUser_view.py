@@ -94,8 +94,8 @@ class RareUserView(ViewSet):
 
     
     def destroy(self, request, pk):
-        event = RareUser.objects.get(pk=pk)
-        event.delete()
+        rareUser = RareUser.objects.get(pk=pk)
+        rareUser.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class RareUserSerializer(serializers.ModelSerializer):
