@@ -8,8 +8,8 @@
           "bio": "married a guy on TV just for the money.",
           "profile_image_url": "https://www.shutterstock.com/image-photo/los-angeles-mar-19-darva-260nw-262237616.jpg",
           "email": "darva@conger.com",
-          "created_on": "02/15/2022",
-          "active": 1,
+          "created_on": "2023-09-15",
+          "active": true,
           "is_staff": true,
           "uid": "1"
 
@@ -25,8 +25,8 @@
         "bio": "Was in a punk band, then quit that band and made another band.",
         "profile_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4uq8JjSj-F614WaqtB24YkUCWZXPbgjO0vQ&s",
         "email": "johnny@rotten.com",
-        "created_on": "03/25/2021",
-        "active": 0,
+        "created_on": "2021-11-07",
+        "active": false,
         "is_staff": false,
         "uid": "2"
 
@@ -42,8 +42,8 @@
         "bio": "I had a tv show for a little while, and I was in a movie once.",
         "profile_image_url": "https://m.media-amazon.com/images/M/MV5BOTk3M2Q5ODctYjBiYy00MGQ3LWFlNDMtN2JhOWM4ZWY3N2IyXkEyXkFqcGc@._V1_.jpg",
         "email": "ricki@lake.com",
-        "created_on": "01/10/2020",
-        "active": null,
+        "created_on": "2022-10-07",
+        "active": false,
         "is_staff": true,
         "uid": "3"
 
