@@ -23,6 +23,30 @@ class PostView(ViewSet):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
+    
+    def create(self, request):
+        """Handle POST operations for creating a post"""
+        try:
+            rare_user = RareUser.objects.get(pk=request.data["rare_user_id"])
+            category = Category.objects.get(pk=request.data["category_id"])
+            
+            post = Post.objects.create(
+                rare_user=rare_user,
+                category=category,
+                title=request.data["title"],
+                publication_date=request.data["publication_date"],
+                image_url=request.data["image_url"],
+                content=request.data["content"],
+                approved=request.data.get("approved", True)
+            )
+            serializer = PostSerializer(post)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except RareUser.DoesNotExist:
+            return Response({'message': 'Rare user not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Category.DoesNotExist:
+            return Response({'message': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
+   
+
 
 
 class PostSerializer(serializers.ModelSerializer):
