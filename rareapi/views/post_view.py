@@ -45,6 +45,11 @@ class PostView(ViewSet):
             return Response({'message': 'Rare user not found.'}, status=status.HTTP_404_NOT_FOUND)
         except Category.DoesNotExist:
             return Response({'message': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
+    def destroy(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
    
 
 
