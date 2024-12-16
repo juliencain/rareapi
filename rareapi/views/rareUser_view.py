@@ -73,7 +73,7 @@ class RareUserView(ViewSet):
           rareUser.email = request.data["email"]
           rareUser.created_on = request.data["created_on"]
           rareUser.active = request.data["active"]
-          rareUser.is_staff = request.data["first_name"]
+          rareUser.is_staff = request.data["is_staff"]
           rareUser.uid = request.data["uid"]
           rareUser.save()
 
