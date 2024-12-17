@@ -5,29 +5,32 @@ from rest_framework.response import Response
 
 @api_view(['POST'])
 def check_user(request):
-    '''Checks to see if User has Associated Rare user
+    '''Checks to see if User has Associated Gamer
 
     Method arguments:
       request -- The full HTTP request object
     '''
-    uid = request.data['uid']
+    # Check if 'uid' is provided in the request data
+    uid = request.data.get('uid')
+    if not uid:
+        return Response({'error': 'UID is required'}, status=400)
 
-    # Use the built-in authenticate method to verify
-    # authenticate returns the user object or None if no user is found
-    rare_user = RareUser.objects.filter(uid=uid).first()
+    # Query the user by uid
+    rareUser = RareUser.objects.filter(uid=uid).first()
 
-    # If authentication was successful, respond with their token
-    if rare_user is not None:
+    # If the user is found, return the user info
+    if rareUser:
         data = {
             'id': rareUser.id,
             'uid': rareUser.uid,
-            'bio': rareUser.bio
+            'first_name': rareUser.first_name,
+            'last_name': rareUser.last_name,
+            'email': rareUser.email,
         }
         return Response(data)
     else:
-        # Bad login details were provided. So we can't log the user in.
-        data = { 'valid': False }
-        return Response(data)
+        # If user doesn't exist, respond with an error
+        return Response({'valid': False}, status=404)
 
 
 @api_view(['POST'])
@@ -38,16 +41,27 @@ def register_user(request):
       request -- The full HTTP request object
     '''
 
-    # Now save the user info in the levelupapi_gamer table
+    # Ensure UID is provided
+    uid = request.data.get('uid')
+    if not uid:
+        return Response({'error': 'UID is required'}, status=400)
+
+    # Create the user
     rareUser = RareUser.objects.create(
-        bio=request.data['bio'],
-        uid=request.data['uid']
+        uid=uid,
+        first_name=request.data.get('first_name', ''),
+        last_name=request.data.get('last_name', ''),
+        bio=request.data.get('bio', ''),
+        profile_image_url=request.data.get('profile_image_url', ''),
+        email=request.data.get('email', ''),
+        created_on=request.data.get('created_on', '2024-01-01'),  # Default date
+        active=request.data.get('active', True),  # Default active
+        is_staff=request.data.get('is_staff', False)  # Default not staff
     )
 
     # Return the gamer info to the client
     data = {
-        'id': gamer.id,
-        'uid': gamer.uid,
-        'bio': gamer.bio
+        'id': rareUser.id,
+        'uid': rareUser.uid,
     }
     return Response(data)
