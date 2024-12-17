@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from rareapi.views import CategoryView, PostView, RareUserView
+from rareapi.views import CategoryView, PostView, RareUserView, auth
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'categories', CategoryView, 'category')
@@ -27,4 +27,6 @@ router.register(r'rareusers', RareUserView, 'rareUser')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('checkuser', auth.check_user),  # Add the checkuser route here
+    path('registeruser', auth.register_user),
 ]
