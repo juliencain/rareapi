@@ -25,8 +25,8 @@ router.register(r'posts', PostView, 'post')
 router.register(r'rareusers', RareUserView, 'rareUser')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', include(router.urls)),
     path('checkuser', auth.check_user),  # Add the checkuser route here
-    path('registeruser', auth.register_user),
+    path('register', auth.register_user),
 ]
